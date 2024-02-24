@@ -1,4 +1,5 @@
 import express from 'express';
+import post from './post/post.routes'
 
 import MessageResponse from '../interfaces/MessageResponse';
 import emojis from './emojis';
@@ -12,5 +13,6 @@ router.get<{}, MessageResponse>('/', (req, res) => {
 });
 
 router.use('/emojis', emojis);
+router.use('/post', post);
 
 export default router;
