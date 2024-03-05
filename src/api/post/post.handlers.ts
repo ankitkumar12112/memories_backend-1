@@ -1,6 +1,5 @@
 import { Response, Request, NextFunction } from 'express';
 import { ObjectId } from 'mongodb';
-import * as z from 'zod';
 
 import { ParamsWithId } from '../../interfaces/ParamsWithId';
 import { PostWithId, Posts, Post } from './post.model';
@@ -82,7 +81,7 @@ export async function deleteAll(req: Request, res: Response<{}>, next: NextFunct
     const result = await Posts.deleteMany({});
     if (!result) {
       res.status(404);
-      throw new Error(`Post not found.`);
+      throw new Error('Post not found.');
     }
     res.json(`${result?.deletedCount} records of Post have been deleted`);
   } catch (error) {

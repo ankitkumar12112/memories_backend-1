@@ -4,11 +4,11 @@ import * as z from 'zod';
 import { db } from '../../db';
 
 export const Post = z.object({
-    firstname: z.string(),
-    lastname: z.string(),
-    image: z.string().optional(),
-    title: z.string(),
-    description: z.string().optional(),
+  firstname: z.string(),
+  lastname: z.string(),
+  image: z.string().optional(),
+  title: z.string(),
+  description: z.string().optional(),
     
 });
 

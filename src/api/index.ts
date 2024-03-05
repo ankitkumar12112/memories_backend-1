@@ -1,5 +1,5 @@
 import express from 'express';
-import post from './post/post.routes'
+import post from './post/post.routes';
 
 import MessageResponse from '../interfaces/MessageResponse';
 import emojis from './emojis';
