@@ -6,10 +6,11 @@
   "scripts": {
     "start": "ts-node src/index.ts",
     "dev": "nodemon src/index.ts",
-    "build": "tsc",
+    "build": "tsc && npm run copy-files",
     "lint": "eslint --fix src test",
     "test": "jest",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "copy-files": "mkdir -p public && cp -r dist/* public"
   },
   "keywords": [],
   "author": "CJ R. <cj@null.computer> (https://w3cj.now.sh)",
