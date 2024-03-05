@@ -6,9 +6,10 @@ import { db } from '../../db';
 export const Post = z.object({
     firstname: z.string(),
     lastname: z.string(),
+    image: z.string().optional(),
     title: z.string(),
     description: z.string().optional(),
-    image: z.string().optional()
+    
 });
 
 export type Post = z.infer<typeof Post>;
