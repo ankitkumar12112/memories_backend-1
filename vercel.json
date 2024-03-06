@@ -1,5 +1,5 @@
 {
 "version": 3,
-"builds": [{"src": "./dist/index.js", "use": "@verel/node"}],
+"builds": [{"src": "./index.js", "use": "@verel/node"}],
 "routes": [{"src": "/(.*)", "dest": "/"}]
 }
