@@ -5,6 +5,7 @@ import cors from 'cors';
 import * as middlewares from './middlewares';
 import MessageResponse from './interfaces/MessageResponse';
 import post from './api/post/post.routes';
+import auth from './api/auth/auth.routes';
 
 
 require('dotenv').config();
@@ -15,8 +16,6 @@ app.use(helmet());
 app.use(cors());
 app.use(express.json());
 
-
-
 app.get<{}, MessageResponse>('/', (req, res) => {
   res.json({
     message: 'Welcome To Backend',
@@ -24,6 +23,7 @@ app.get<{}, MessageResponse>('/', (req, res) => {
 });
 
 app.use('/post', post);
+app.use('/auth', auth);
 
 app.use(middlewares.notFound);
 app.use(middlewares.errorHandler);
