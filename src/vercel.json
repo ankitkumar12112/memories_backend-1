@@ -1,0 +1,8 @@
+{
+    "functions": {
+      "dist/index.js": {
+        "runtime": "node@14"
+      }
+    }
+  }
+  
