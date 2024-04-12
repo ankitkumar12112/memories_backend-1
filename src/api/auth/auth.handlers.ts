@@ -1,5 +1,6 @@
 import { Response, Request, NextFunction } from 'express';
 import { ObjectId } from 'mongodb';
+import bcrypt from 'bcrypt';
 
 import { ParamsWithId } from '../../interfaces/ParamsWithId';
 import {AuthWithId, Auths, Auth } from './auth.model';
@@ -15,13 +16,31 @@ export async function findAll(req: Request, res: Response<AuthWithId[]>, next: N
 
 export async function createOne(req: Request<{}, AuthWithId, Auth>, res: Response<AuthWithId>, next: NextFunction) {
   try {
-    const insertResult = await Auths.insertOne(req.body);
-    if (!insertResult.acknowledged) throw new Error('Error inserting Auth.');
-    res.status(201);
-    res.json({
-      _id: insertResult.insertedId,
-      ...req.body,
+    const { firstname, lastname, email, password } = req.body;
+
+    // Hash the password before inserting into the database
+    const hashedPassword = await bcrypt.hash(password, 10); // Using saltRounds = 10
+
+    const insertResult = await Auths.insertOne({
+      firstname,
+      lastname,
+      email,
+      password: hashedPassword, // Store hashed password in the database
     });
+
+    if (!insertResult.acknowledged) throw new Error('Error inserting Auth.');
+
+    // Ensure password type matches Auth model definition
+    const responseWithPassword: AuthWithId = {
+      _id: insertResult.insertedId,
+      firstname,
+      lastname,
+      email,
+      password: hashedPassword,
+    };
+
+    res.status(201);
+    res.json(responseWithPassword);
   } catch (error) {
     next(error);
   }
