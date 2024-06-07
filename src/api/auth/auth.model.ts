@@ -8,7 +8,6 @@ export const Auth = z.object({
   lastname: z.string(),
   email: z.string(),
   password: z.string(),
-  
 });
 
 export type Auth = z.infer<typeof Auth>;
