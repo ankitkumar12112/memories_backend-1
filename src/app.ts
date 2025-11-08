@@ -20,7 +20,7 @@ app.use(helmet());
 app.use(cors({
   origin: [
     "https://memories-indol-six.vercel.app", // deployed frontend
-    "http://localhost:3000",                 // local development
+    "https://localhost:3000",                 // local development
   ],
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   //credentials: true, // enable if using cookies / auth headers

@@ -44,19 +44,25 @@ export async function createOne(
       title: req.body.title,
       description: req.body.description,
     });
-
+    console.log("1",validatedData);
+    
     // Upload file to Firebase Storage
 
     if (req.file) {
       //create a reference in firebase
+      console.log("2");
       const storageRef = ref(storage, `files/${req.file.originalname}`);
+      console.log("2.1",storageRef);
       const metadata = { contentType: req.file.mimetype };
+      console.log("2.2",metadata);
       const snapshot = await uploadBytesResumable(
         storageRef,
         req.file.buffer,
         metadata
       );
+      console.log("3",snapshot);
       const downloadURL = await getDownloadURL(snapshot.ref);
+      console.log("4",downloadURL);
       // Add file URL to validated data
       validatedData.image = downloadURL;
     }
@@ -64,7 +70,7 @@ export async function createOne(
     // Insert post into MongoDB
 
     const insertResult = await Posts.insertOne(validatedData);
-
+    console.log("5",insertResult);
     if (!insertResult.acknowledged) throw new Error("Error inserting Post.");
     res.status(201);
     res.json({
