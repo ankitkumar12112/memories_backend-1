@@ -17,14 +17,7 @@ dotenv.config();
 const app = express();
 app.use(morgan("dev"));
 app.use(helmet());
-app.use(cors({
-  origin: [
-    "https://memories-indol-six.vercel.app", // deployed frontend
-    "https://localhost:3000",                 // local development
-  ],
-  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-  credentials: false, // enable if using cookies / auth headers
-}));
+app.use(cors());
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.get<{}, MessageResponse>("/", (req, res) => {
