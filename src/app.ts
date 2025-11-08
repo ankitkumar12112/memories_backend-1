@@ -23,7 +23,7 @@ const ALLOWED_ORIGINS = (process.env.ALLOWED_ORIGINS || "")
 
 // Dev fallback if env not set
 if (ALLOWED_ORIGINS.length === 0) {
-  ALLOWED_ORIGINS.push("http://localhost:3000", "https://memories-indol-six.vercel.app/");
+  ALLOWED_ORIGINS.push("http://localhost:3000", "https://memories-indol-six.vercel.app");
 }
 
 const corsOptions: CorsOptions = {
