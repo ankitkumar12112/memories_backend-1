@@ -20,6 +20,7 @@ app.options("*", cors());
 app.use(morgan("dev"));
 app.use(helmet());
 app.use(express.json());
+app.get("/ping", (req, res) => res.json({ ok: true }));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.get<{}, MessageResponse>("/", (req, res) => {
   res.json({
