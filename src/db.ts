@@ -1,12 +1,12 @@
 import { MongoClient } from 'mongodb';
 
  //let password = 'Jatov007'; // Replace with your actual password
- let password = 'ankitkumar12112';
+ let password = 'ankit12';
  let encodedPassword = encodeURIComponent(password);
 
 
  //let MONGO_URI = `mongodb+srv://jatovdeepak:${encodedPassword}@cluster0.rrkpuay.mongodb.net/`;
- let MONGO_URI =`mongodb+srv://myAtlasDBUser:${encodedPassword}@myatlasclusteredu.8yuh5dc.mongodb.net/?appName=myAtlasClusterEDU`
+ let MONGO_URI =`mongodb+srv://ankit:${encodedPassword}@myatlasclusteredu.8yuh5dc.mongodb.net/?appName=myAtlasClusterEDU`
 //let MONGO_URI = 'mongodb://127.0.0.1/memories';
 
 
