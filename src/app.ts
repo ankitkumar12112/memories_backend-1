@@ -18,9 +18,12 @@ const app = express();
 app.use(morgan("dev"));
 app.use(helmet());
 app.use(cors({
-  origin: "https://memories-indol-six.vercel.app",
+  origin: [
+    "https://memories-indol-six.vercel.app", // deployed frontend
+    "http://localhost:3000",                 // local development
+  ],
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-  credentials: true, // enable if using cookies / auth headers
+  //credentials: true, // enable if using cookies / auth headers
 }));
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
