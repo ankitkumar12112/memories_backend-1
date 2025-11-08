@@ -23,7 +23,7 @@ app.use(cors({
     "https://localhost:3000",                 // local development
   ],
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-  //credentials: true, // enable if using cookies / auth headers
+  credentials: false, // enable if using cookies / auth headers
 }));
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
